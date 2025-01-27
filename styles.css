@@ -1,0 +1,115 @@
+/* styles.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #000000, #212121);
+  animation: backgroundAnimation 10s infinite alternate;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+button {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.history-container {
+  display: none;
+  background-color: #333333;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.history-item {
+  background-color: #444444;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.history-item:hover {
+  transform: scale(1.05);
+}
+
+.delete-button {
+  background-color: #ff6b6b;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.delete-button:hover {
+  background-color: #e60000;
+}
+
+@keyframes meteoroidAnimation {
+  0% {
+    left: -50px;
+    opacity: 1;
+  }
+  100% {
+    left: 100vw;
+    opacity: 0;
+  }
+}
+
+.meteoroid {
+  position: absolute;
+  top: -50px;
+  width: 5px;
+  height: 5px;
+  background-color: #ffcc00;
+  border-radius: 50%;
+  animation: meteoroidAnimation 3s infinite linear;
+}
+
+@keyframes backgroundAnimation {
+  0% {
+    background: linear-gradient(180deg, #000000, #212121);
+  }
+  100% {
+    background: linear-gradient(180deg, #212121, #000000);
+  }
+}
