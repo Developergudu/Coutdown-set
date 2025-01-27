@@ -1,7 +1,6 @@
 // script.js
 
 let historyData = [];
-let meteoroidInterval;
 
 function calculateAge() {
   const birthdate = document.getElementById('birthdate').value;
@@ -13,23 +12,20 @@ function calculateAge() {
   const birthDateObj = new Date(birthdate);
   const now = new Date();
 
-  // Calculate age in years
   let years = now.getFullYear() - birthDateObj.getFullYear();
   if (
     now.getMonth() < birthDateObj.getMonth() ||
     (now.getMonth() === birthDateObj.getMonth() && now.getDate() < birthDateObj.getDate())
   ) {
-    years--; // Adjust if birthday hasn't passed yet
+    years--;
   }
 
-  // Calculate days, weeks, minutes, and seconds
   const diffInTime = now - birthDateObj;
   const days = Math.floor(diffInTime / (1000 * 60 * 60 * 24));
   const weeks = Math.floor(days / 7);
   const minutes = Math.floor(diffInTime / (1000 * 60));
   const seconds = Math.floor(diffInTime / 1000);
 
-  // Calculate next birthday
   let nextBirthday = new Date(now.getFullYear(), birthDateObj.getMonth(), birthDateObj.getDate());
   if (nextBirthday < now) {
     nextBirthday.setFullYear(now.getFullYear() + 1);
@@ -37,7 +33,6 @@ function calculateAge() {
   const daysRemaining = Math.floor((nextBirthday - now) / (1000 * 60 * 60 * 24));
   const nextBirthdayDayName = nextBirthday.toLocaleDateString('en-US', { weekday: 'long' });
 
-  // Add to history
   historyData.push({
     birthdate,
     years,
@@ -49,7 +44,6 @@ function calculateAge() {
     daysRemaining
   });
 
-  // Update UI with calculated data
   document.getElementById('years').innerText = `You are ${years} years old.`;
   document.getElementById('days').innerText = `That's ${days} days.`;
   document.getElementById('weeks').innerText = `Or ${weeks} weeks.`;
@@ -103,25 +97,5 @@ function showHistory() {
 
 function deleteHistory(index) {
   historyData.splice(index, 1);
-  showHistory(); // Refresh history
-}
-
-// Meteoroid animation generation
-function createMeteoroid() {
-  const meteoroid = document.createElement('div');
-  meteoroid.classList.add('meteoroid');
-  document.body.appendChild(meteoroid);
-
-  setTimeout(() => {
-    meteoroid.remove();
-  }, 3000);
-}
-
-function startMeteoroidAnimation() {
-  meteoroidInterval = setInterval(createMeteoroid, 3000);
-}
-
-// Start meteoroid animation when page loads
-window.onload = () => {
-  startMeteoroidAnimation();
-};
+  showHistory();
+      }
