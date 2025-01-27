@@ -30,6 +30,26 @@ body {
   text-align: center;
 }
 
+.ticker-container {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.ticker {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ticker-scroll 20s linear infinite;
+}
+
+#ticker-text {
+  font-size: 16px;
+  font-family: 'Comic Sans MS', cursive;
+  color: #00FF00;
+}
+
 button {
   background-color: #007BFF;
   color: white;
@@ -84,25 +104,13 @@ button:hover {
   background-color: #e60000;
 }
 
-@keyframes meteoroidAnimation {
+@keyframes ticker-scroll {
   0% {
-    left: -50px;
-    opacity: 1;
+    transform: translateX(100%);
   }
   100% {
-    left: 100vw;
-    opacity: 0;
+    transform: translateX(-100%);
   }
-}
-
-.meteoroid {
-  position: absolute;
-  top: -50px;
-  width: 5px;
-  height: 5px;
-  background-color: #ffcc00;
-  border-radius: 50%;
-  animation: meteoroidAnimation 3s infinite linear;
 }
 
 @keyframes backgroundAnimation {
